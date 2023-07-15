@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { initializeWeather } from './reducers/weatherReducer';
+import { useEffect } from 'react';
+
 
 function App() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(initializeWeather())
+  }, [dispatch])
+
+  const weatherData = useSelector(( { weather }) => {
+    return weather
+  })
+  console.log('weater data is ', weatherData);
+  console.log('test reference env varialble', process.env.REACT_APP_WEATHER_API);
+  //need to find way of getting wet bulb temperature for each location.
+
+  //need to be able to get the hottest temperature from each country? And rank them?
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      test
+      {weatherData.name}
     </div>
   );
 }
