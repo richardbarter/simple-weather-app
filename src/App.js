@@ -15,11 +15,11 @@ function App() {
     return weather
   })
   console.log('weater data is ', weatherData);
-  console.log('test reference env varialble', process.env.REACT_APP_WEATHER_API);
+
   //need to find way of getting wet bulb temperature for each location.
 
   //need to be able to get the hottest temperature from each country? And rank them?
-  
+
   return (
     <div>
       test
